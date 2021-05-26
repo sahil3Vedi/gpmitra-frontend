@@ -1,0 +1,25 @@
+.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-selected{
+    color: white !important;
+    border-bottom: 2px solid #ffffff00;
+    font-weight: bold;
+}
+
+.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item:hover{
+    color: white !important;
+    border-bottom: 2px solid #ffffff00;
+}
+
+.ant-menu-horizontal{
+    font-weight: bold;
+}
+
+.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-selected a{
+    color: white !important;
+    border-bottom: 2px solid #ffffff00;
+    font-weight: bold;
+}
+
+.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item:hover a{
+    color: white !important;
+    border-bottom: 2px solid #ffffff00;
+}
