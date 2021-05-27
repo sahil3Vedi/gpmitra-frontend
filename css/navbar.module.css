@@ -1,3 +1,15 @@
 .navbarTop{
     background-color: #36cfc9;
 }
+
+.topNavbar{
+    display: grid;
+    grid-template-columns: 1fr auto;
+    background-color: #36cfc9;
+}
+
+.navbarLogo{
+    width: 100px;
+    margin-top: 8px;
+    margin-right: 10px;
+}

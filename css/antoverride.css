@@ -2,15 +2,24 @@
     color: white !important;
     border-bottom: 2px solid #ffffff00;
     font-weight: bold;
+    background-color: #08979c;
 }
 
 .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item:hover{
     color: white !important;
     border-bottom: 2px solid #ffffff00;
+    background-color: #08979c;
+}
+
+.ant-menu-item{
+    margin: 0 !important;
+    padding: 0px 20px !important;
+    top: 0px !important;
 }
 
 .ant-menu-horizontal{
     font-weight: bold;
+    border-bottom: 0px;
 }
 
 .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-selected a{
@@ -21,5 +30,19 @@
 
 .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item:hover a{
     color: white !important;
+    border-bottom: 2px solid #ffffff00;
+}
+
+.ant-menu-submenu-title{
+    color: black !important;
+}
+
+.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu{
+    margin: 0 !important;
+    padding: 0px 20px !important;
+    top: 0px !important;
+}
+
+.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu:hover{
     border-bottom: 2px solid #ffffff00;
 }

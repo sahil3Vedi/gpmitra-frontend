@@ -2,8 +2,9 @@
 import React, { useState } from 'react'
 // NEXT
 import { useRouter } from 'next/router'
+import Link from 'next/link'
 // ANTD
-import { Form, Input, Button, message } from 'antd'
+import { Form, Input, Button, message, Divider } from 'antd'
 // CSS
 import signinStyles from '../css/signin.module.css'
 // IMAGES
@@ -47,11 +48,11 @@ const SigninPage = () => {
                     <img className={signinStyles.gpmitraLogo} src={logoImage} alt=""/>
                     <Form {...layout} name="basic" initialValues={{ remember: true }} onFinish={onFinish} onFinishFailed={onFinishFailed}>
                         <Form.Item label="Email" name="email" rules={[{ required: true, message: 'Please input your email!' }]}>
-                            <Input style={{maxWidth:"300px"}}/>
+                            <Input placeholder="Enter Email ID" style={{maxWidth:"300px"}}/>
                         </Form.Item>
 
                         <Form.Item label="Password" name="password" rules={[{ required: true, message: 'Please input your password!' }]}>
-                            <Input.Password style={{maxWidth:"300px"}}/>
+                            <Input.Password placeholder="Enter Password" style={{maxWidth:"300px"}}/>
                         </Form.Item>
 
                         <Form.Item {...tailLayout}>
@@ -60,6 +61,12 @@ const SigninPage = () => {
                             </Button>
                         </Form.Item>
                     </Form>
+                    <Divider className={signinStyles.divider}>Not Registered?</Divider>
+                    <div className={signinStyles.btnChangeContext}>
+                        <Link href="/register">
+                            <Button type="primary">Register</Button>
+                        </Link>
+                    </div>
                 </div>
             </div>
     )

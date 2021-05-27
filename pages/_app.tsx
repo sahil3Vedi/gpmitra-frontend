@@ -6,6 +6,7 @@ import { useRouter } from 'next/router'
 import 'antd/dist/antd.css'
 import '../css/antd.css'
 import '../css/antoverride.css'
+import '../css/global.css'
 // ACTIONS
 import * as authActions from '../actions/auth.ts'
 

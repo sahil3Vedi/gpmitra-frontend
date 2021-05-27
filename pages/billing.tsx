@@ -1,15 +1,15 @@
 // COMPONENTS
 import Navbar from '../components/navbar'
 
-const Dashboard = () => {
+const Billing = () => {
     return (
         <div>
             <Navbar/>
             <div className="pageWrapper">
-                <h1>Dashboard 👋</h1>
+                <h1>Billing 👋</h1>
             </div>
         </div>
     )
 }
 
-export default Dashboard
+export default Billing

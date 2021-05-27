@@ -35,7 +35,7 @@ export const logout = (navTo: any) => {
 export const checkAuth = (navTo: any, pageRoute: string) => {
     let token = localStorage.getItem('token')
     if (!token) {
-        logout(navTo)
+        navTo((pageRoute!=="/signin" && pageRoute!=="/register") ? "/" : pageRoute)
     } else {
         let exp_date: string = localStorage.getItem('expirationDate') || ""
         const expirationDate = new Date(exp_date)
@@ -49,4 +49,27 @@ export const checkAuth = (navTo: any, pageRoute: string) => {
             navTo(pageRoute==="/signin" ? "/dashboard" : pageRoute)
         }
     }
+}
+
+export const register = (values: any, callback: any, navTo: any) => {
+    const {email, password, fullname, qualification, organisation, phone} = values
+    axios.post(`${process.env.NEXT_PUBLIC_BACKEND}/doctors/register`, {email, password, name: fullname, qualification, organisation, phone})
+    .then(res=>{
+        console.log(res.data)
+        let token = res.data.token
+        const expirationDate = new Date(new Date().getTime() + 3600*1000)
+        localStorage.setItem('token', token)
+        localStorage.setItem('expirationDate', expirationDate.toString())
+        setTimeout(() => {
+            logout(navTo)
+        }, 3600*1000)
+        message.success("Authenticated")
+        callback(false)
+        navTo('/dashboard')
+    })
+    .catch(e=>{
+        console.log(e)
+        message.error("Unable to Register")
+        callback(false)
+    })
 }

@@ -9,6 +9,11 @@
     background-size: cover;
 }
 
+.registerPicture{
+    background: url('../assets/registerpicture.jpeg');
+    background-size: cover;
+}
+
 .signinOverlay{
     background-color: #36cfc9;
     opacity: 0.7;
@@ -30,4 +35,19 @@
 .gpmitraLogo{
     width: 300px;
     margin-left: calc(50% - 150px);
+}
+
+.gpmitraShortLogo{
+    width: 300px;
+    margin-left: calc(50% - 150px);
+    margin-top: 50px;
+}
+
+.btnChangeContext{
+    display: flex;
+    justify-content: center;
+}
+
+.divider{
+    margin-top: 100px!important;
 }
