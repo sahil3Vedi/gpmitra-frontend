@@ -4,13 +4,13 @@ import React, { useState } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 // ANTD
-import { Form, Input, Button, message, Divider } from 'antd'
+import { Form, Input, Button, Divider } from 'antd'
 // CSS
 import signinStyles from '../css/signin.module.css'
 // IMAGES
 const logoImage = require('../assets/gpmitralogotransp.png')
 // ACTIONS
-import * as authActions from '../actions/auth.ts'
+import * as authActions from '../actions/auth'
 
 const layout = {
   labelCol: { span: 8 },
@@ -37,7 +37,7 @@ const SigninPage = () => {
     }
 
     const onFinishFailed = (errorInfo: any) => {
-        console.log("Fel")
+        console.log(errorInfo)
     }
     return (
         <div className={signinStyles.signinPage}>

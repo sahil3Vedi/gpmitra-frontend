@@ -3,11 +3,10 @@ import { useRouter } from 'next/router'
 import Link from 'next/link'
 // ANT
 import { Menu } from 'antd'
-import { AppstoreOutlined, UserOutlined, CarryOutOutlined, LogoutOutlined } from '@ant-design/icons'
 // CSS
 import navbarStyles from '../css/navbar.module.css'
 // ACTIONS
-import * as authActions from '../actions/auth.ts'
+import * as authActions from '../actions/auth'
 // IMAGES
 const logoImage = require('../assets/gpmitralogowhitetransp.png')
 

@@ -1,6 +1,7 @@
 // REACT
 import { useEffect } from 'react'
 // NEXT
+import { AppProps } from 'next/app'
 import { useRouter } from 'next/router'
 // CSS
 import 'antd/dist/antd.css'
@@ -8,7 +9,7 @@ import '../css/antd.css'
 import '../css/antoverride.css'
 import '../css/global.css'
 // ACTIONS
-import * as authActions from '../actions/auth.ts'
+import * as authActions from '../actions/auth'
 
 function MyApp({ Component, pageProps }: AppProps) {
 

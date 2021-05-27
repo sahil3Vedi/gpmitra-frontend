@@ -10,7 +10,7 @@ import signinStyles from '../css/signin.module.css'
 // IMAGES
 const logoImage = require('../assets/gpmitralogotranspshort.png')
 // ACTIONS
-import * as authActions from '../actions/auth.ts'
+import * as authActions from '../actions/auth'
 
 const layout = {
   labelCol: { span: 8 },
@@ -38,12 +38,12 @@ const RegisterPage = () => {
             message.error("Passwords Do Not Match")
         } else {
             setLoading(true)
-            authActions.register(values, setLoading, navTo)    
+            authActions.register(values, setLoading, navTo)
         }
     }
 
     const onFinishFailed = (errorInfo: any) => {
-        console.log("Fel")
+        console.log(errorInfo)
     }
     return (
         <div className={signinStyles.signinPage}>
@@ -71,7 +71,7 @@ const RegisterPage = () => {
                         </Form.Item>
 
                         <Form.Item label="Qualification" name="qualification" rules={[{ required: true, message: 'Kindly select your  qualification' }]}>
-                            <Select showSearch style={{maxWidth:"300px"}} placeholder="Select Qualification" optionFilterProp="children" filterOption={(input, option) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}>
+                            <Select showSearch style={{maxWidth:"300px"}} placeholder="Select Qualification" optionFilterProp="children" filterOption={(input, option) => option!.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}>
                                 <Option value="DHMS">DHMS</Option>
                                 <Option value="MD">MD</Option>
                                 <Option value="MBBS">MBBS</Option>
@@ -83,7 +83,7 @@ const RegisterPage = () => {
                         </Form.Item>
 
                         <Form.Item label="Contact Number" name="phone" rules={[{ required: true, message: 'Kindly enter your contact number' }]}>
-                            <InputNumber addonBefore="+91 " placeholder="Enter Contact Number" style={{width:"300px"}} formatter={value=>`+91 ${value}`} parser={value=>value.replace('+91 ', '')} max={9999999999} min={999999999}/>
+                            <InputNumber placeholder="Enter Contact Number" style={{width:"300px"}} formatter={value=>`+91 ${value}`} parser={(value:any)=>value.replace('+91 ', '')} max={9999999999} min={999999999}/>
                         </Form.Item>
 
                         <Form.Item {...tailLayout}>
