@@ -21,7 +21,7 @@ export const login = (values: any, callback: any, navTo: any) => {
     })
     .catch(e=>{
         console.log(e)
-        message.error(e.response.data.message)
+        message.error("Unable to Authenticate")
         callback(false)
     })
 }

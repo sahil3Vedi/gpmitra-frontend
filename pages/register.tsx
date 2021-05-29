@@ -83,11 +83,11 @@ const RegisterPage = () => {
                         </Form.Item>
 
                         <Form.Item label="Contact Number" name="phone" rules={[{ required: true, message: 'Kindly enter your contact number' }]}>
-                            <InputNumber placeholder="Enter Contact Number" style={{width:"300px"}} formatter={value=>`+91 ${value}`} parser={(value:any)=>value.replace('+91 ', '')} max={9999999999} min={999999999}/>
+                            <InputNumber placeholder="Enter Contact Number" style={{width:"300px"}} formatter={value=>`+91 ${value}`} parser={(value:any)=>value.replace('+91 ', '')} max={9999999999} min={1000000000}/>
                         </Form.Item>
 
                         <Form.Item {...tailLayout}>
-                            <Button loading={signinLoading} type="primary" htmlType="submit">
+                            <Button loading={signinLoading} type="primary" onClick={()=>message.error("Registration turned off by staff")}>
                                 Register
                             </Button>
                         </Form.Item>

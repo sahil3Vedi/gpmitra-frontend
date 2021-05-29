@@ -46,7 +46,7 @@ const SigninPage = () => {
                 </div>
                 <div className={signinStyles.signinForm}>
                     <img className={signinStyles.gpmitraLogo} src={logoImage} alt=""/>
-                    <Form {...layout} name="basic" initialValues={{ remember: true }} onFinish={onFinish} onFinishFailed={onFinishFailed}>
+                    <Form {...layout} name="basic" onFinish={onFinish} onFinishFailed={onFinishFailed}>
                         <Form.Item label="Email" name="email" rules={[{ required: true, message: 'Please input your email!' }]}>
                             <Input placeholder="Enter Email ID" style={{maxWidth:"300px"}}/>
                         </Form.Item>
