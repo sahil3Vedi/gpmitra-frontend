@@ -46,3 +46,10 @@
 .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu:hover{
     border-bottom: 2px solid #ffffff00;
 }
+
+.ant-spin{
+    background-color: whitesmoke;
+    width: 100%;
+    padding: 50px;
+    border-radius: 10px;
+}
