@@ -1,3 +1,6 @@
+// REACT
+import React from 'react'
+React.useLayoutEffect = React.useEffect
 // NEXT
 import { useRouter } from 'next/router'
 import Link from 'next/link'

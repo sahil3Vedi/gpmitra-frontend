@@ -5,3 +5,30 @@
 .tableContainer{
     margin-top: 30px;
 }
+
+/* DATA DISPLAY */
+
+.sectionHeader{
+    font-size: 20px;
+    background-color: whitesmoke;
+    padding: 2px 5px;
+}
+
+.displayDetails3{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.attributeKey{
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 0px;
+}
+
+/* PAGE DISPLAY */
+
+.pageDivider2{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 10px;
+}
