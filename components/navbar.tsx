@@ -1,6 +1,3 @@
-// REACT
-import React from 'react'
-React.useLayoutEffect = React.useEffect
 // NEXT
 import { useRouter } from 'next/router'
 import Link from 'next/link'
@@ -20,10 +17,6 @@ const Navbar = () => {
     const router = useRouter()
     const currentPage = router.pathname
 
-    const navTo = (pageRoute: string) => {
-        router.push(pageRoute)
-    }
-
     return (
         <div className={navbarStyles.topNavbar}>
             <Menu selectedKeys={[currentPage]} mode="horizontal" className={navbarStyles.navbarTop}>
@@ -34,9 +27,7 @@ const Navbar = () => {
                 <Menu.Item key="/inventory"><Link href="/inventory">Inventory</Link></Menu.Item>
                 <Menu.Item key="/billing"><Link href="/billing">Billing</Link></Menu.Item>
                 <Menu.Item key="/referrals"><Link href="/referrals">Referrals</Link></Menu.Item>
-                <SubMenu key="/account" title="Settings">
-                    <Menu.Item key="/logout" onClick={()=>authActions.logout(navTo)}>Logout</Menu.Item>
-                </SubMenu>
+                <Menu.Item key="/settings"><Link href="/referrals">Settings</Link></Menu.Item>
             </Menu>
             <div>
                 <img className={navbarStyles.navbarLogo} src={logoImage} alt="gp-mitra-logo"/>

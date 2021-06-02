@@ -1,3 +1,5 @@
+// NEXT
+import { useRouter } from 'next/router'
 // AXIOS
 import axios from 'axios'
 // ANTD
@@ -13,7 +15,7 @@ export const login = (values: any, callback: any, navTo: any) => {
         localStorage.setItem('token', token)
         localStorage.setItem('expirationDate', expirationDate.toString())
         setTimeout(() => {
-            logout(navTo)
+            logout()
         }, 3600*1000)
         message.success("Authenticated")
         callback(false)
@@ -26,10 +28,11 @@ export const login = (values: any, callback: any, navTo: any) => {
     })
 }
 
-export const logout = (navTo: any) => {
+export const logout = () => {
     localStorage.removeItem('expirationDate')
     localStorage.removeItem('token')
-    navTo('/signin')
+    const router = useRouter()
+    router.push('/signin')
 }
 
 export const checkAuth = (navTo: any, pageRoute: string) => {
@@ -40,11 +43,11 @@ export const checkAuth = (navTo: any, pageRoute: string) => {
         let exp_date: string = localStorage.getItem('expirationDate') || ""
         const expirationDate = new Date(exp_date)
         if (expirationDate <= new Date()){
-            logout(navTo)
+            logout()
         }
         else {
             setTimeout(() => {
-                logout(navTo)
+                logout()
             }, expirationDate.getTime() - new Date().getTime())
             navTo(pageRoute==="/signin" ? "/dashboard" : pageRoute)
         }
@@ -61,7 +64,7 @@ export const register = (values: any, callback: any, navTo: any) => {
         localStorage.setItem('token', token)
         localStorage.setItem('expirationDate', expirationDate.toString())
         setTimeout(() => {
-            logout(navTo)
+            logout()
         }, 3600*1000)
         message.success("Authenticated")
         callback(false)
