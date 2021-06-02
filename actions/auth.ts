@@ -1,5 +1,3 @@
-// NEXT
-import { useRouter } from 'next/router'
 // AXIOS
 import axios from 'axios'
 // ANTD
@@ -31,8 +29,7 @@ export const login = (values: any, callback: any, navTo: any) => {
 export const logout = () => {
     localStorage.removeItem('expirationDate')
     localStorage.removeItem('token')
-    const router = useRouter()
-    router.push('/signin')
+    window.location.pathname = '/signin'
 }
 
 export const checkAuth = (navTo: any, pageRoute: string) => {

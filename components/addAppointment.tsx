@@ -1,7 +1,7 @@
 // REACT
 import { useState } from 'react'
 // ANT
-import { DatePicker, TimePicker, Form, Button, AutoComplete, Select, message } from 'antd'
+import { DatePicker, TimePicker, Form, Button, Select, message } from 'antd'
 const { Option } = Select
 // MOMENT
 import moment from 'moment'
@@ -22,18 +22,18 @@ const AddAppointment = (props: any) => {
 
     const [appointmentForm] = Form.useForm()
     const [loading, setLoading] = useState(false)
-    const [validName, setValidName] = useState(false)
 
     const onFinish = (values: any) => {
         setLoading(true)
         const config = {headers:{'x-auth-token':localStorage.getItem('token')}}
         axios.post(`${process.env.NEXT_PUBLIC_BACKEND}/appointments/create`, values, config)
-        .then(res=>{
+        .then(()=>{
             message.success("Appointment Added")
             setLoading(false)
+            props.reloadData()
             props.modalVisible(false)
         })
-        .catch(e=>{
+        .catch(()=>{
             message.success("Unable to Add Appointment")
             setLoading(false)
         })
@@ -44,8 +44,8 @@ const AddAppointment = (props: any) => {
     }
 
     const patients = props.patients
-    patients.sort((a, b) => a.name.localeCompare(b.name))
-    const patientOptions = patients.map(p=><Option value={p._id} key={p._id}>{`${p.name} (+91 ${p.phone})`}</Option>)
+    patients.sort((a:any, b:any) => a.name.localeCompare(b.name))
+    const patientOptions = patients.map((p:any)=><Option value={p._id} key={p._id}>{`${p.name} (+91 ${p.phone})`}</Option>)
 
     return (
         <div>

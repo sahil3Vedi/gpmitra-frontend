@@ -30,13 +30,13 @@ const AddPatient = (props: any) => {
         setLoading(true)
         const config = {headers:{'x-auth-token':localStorage.getItem('token')}}
         axios.post(`${process.env.NEXT_PUBLIC_BACKEND}/patients/create`,values, config)
-        .then(res=>{
+        .then(()=>{
             message.success("Patient Added")
             setLoading(false)
             props.reloadTable()
             props.setModalVisible(false)
         })
-        .catch(e=>{
+        .catch(()=>{
             message.error("Unable to Add Patient")
             setLoading(false)
         })

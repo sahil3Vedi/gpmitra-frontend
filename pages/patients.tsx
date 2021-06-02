@@ -19,7 +19,7 @@ const Patients = () => {
     const [viewingPatient, setViewingPatient] = useState(false)
     const [loading, setLoading] = useState(true)
     const [patients, setPatients] = useState([])
-    const [patient, setPatient] = useState({})
+    const [patient, setPatient] = useState<any>({})
 
     const loadPatients = () => {
         setLoading(true)
@@ -29,7 +29,7 @@ const Patients = () => {
             setPatients(res.data.message)
             setLoading(false)
         })
-        .catch(e=>{
+        .catch(()=>{
             message.error("Unable to Load Patients")
             setLoading(false)
         })
@@ -47,19 +47,20 @@ const Patients = () => {
         </Modal>
     )
 
-    const viewPatientDetails = (record) => {
-        setPatient(record)
+    const viewPatientDetails = (patientID: any) => {
+        var patientFound: any = patients.find((p: any) => {return p._id === patientID})
+        setPatient(patientFound)
         setViewingPatient(true)
     }
 
     const patientColumns = [
         {title: 'Name', dataIndex: 'name', key: 'name'},
-        {title: 'Gender', dataIndex: 'gender', key: 'gender', render: (text)=><p>{text[0].toUpperCase()}</p>},
-        {title: 'Age', dataIndex: 'age', key: 'age', render: (text,record)=><p>{record["dob"] ? moment().diff(record["dob"], 'years', true).toFixed(1) : text.toFixed(1)}</p>},
+        {title: 'Gender', dataIndex: 'gender', key: 'gender', render: (text: string)=><p>{text[0].toUpperCase()}</p>},
+        {title: 'Age', dataIndex: 'age', key: 'age', render: (text: number,record: any)=><p>{record["dob"] ? moment().diff(record["dob"], 'years', true).toFixed(1) : text.toFixed(1)}</p>},
         {title: 'Occupation', dataIndex: 'occupation', key: 'occupation'},
         {title: 'Phone', dataIndex: 'phone', key: 'phone'},
         {title: 'Email', dataIndex: 'email', key: 'email'},
-        {title:'', dataIndex: '_id', key:'_id', render: (text,record)=><Button type="primary" icon={<PlusOutlined/>} onClick={()=>viewPatientDetails(record)}></Button>}
+        {title:'', dataIndex: '_id', key:'_id', render: (text: any)=><Button type="primary" icon={<PlusOutlined/>} onClick={()=>viewPatientDetails(text)}></Button>}
     ]
 
     useEffect(()=>{

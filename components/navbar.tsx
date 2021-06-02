@@ -5,12 +5,8 @@ import Link from 'next/link'
 import { Menu } from 'antd'
 // CSS
 import navbarStyles from '../css/navbar.module.css'
-// ACTIONS
-import * as authActions from '../actions/auth'
 // IMAGES
 const logoImage = require('../assets/gpmitralogowhitetransp.png')
-
-const { SubMenu } = Menu
 
 const Navbar = () => {
 
