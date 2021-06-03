@@ -48,7 +48,7 @@ const AppointmentCalendar = (props:any) => {
     },[props.appointments])
 
     return (
-        <Calendar dateCellRender={dateCellRender}/>
+        <Calendar mode="month" dateCellRender={dateCellRender}/>
     )
 }
 

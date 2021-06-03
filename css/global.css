@@ -31,4 +31,5 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     padding: 10px;
+    column-gap: 35px;
 }

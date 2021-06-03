@@ -2,8 +2,10 @@
 import React, { useState, useEffect } from 'react'
 React.useLayoutEffect = React.useEffect
 // ANT
-import { Button, Modal, message, Spin } from 'antd'
-import { PlusOutlined } from '@ant-design/icons'
+import { Button, Modal, message, Spin, Space } from 'antd'
+import { PlusOutlined, CheckOutlined, DeleteOutlined, SettingOutlined } from '@ant-design/icons'
+// CSS
+import AppointmentsStyle from '../css/appointments.module.css'
 // COMPONENTS
 import Navbar from '../components/navbar'
 import AddAppointment from '../components/addAppointment'
@@ -17,9 +19,17 @@ const timeFormat = "HH:mm"
 
 const Appointments = () => {
     const [addingAppointment, setAddingAppointment] = useState(false)
-    const [patients, setPatients] = useState([])
+    const [patients, setPatients] = useState<any>([])
     const [appointments, setAppointments] = useState([])
     const [loading, setLoading] = useState(true)
+
+    const fetchPatientDetails = (patientID: any) => {
+        for (var p in patients){
+            if (patientID === patients[p]._id){
+                return <p className={AppointmentsStyle.upcomingPatientDetails}>{`${patients[p].name} (+91 ${patients[p].phone})`}</p>
+            }
+        }
+    }
 
     const loadPatientsAndAppointments = () => {
         setLoading(true)
@@ -52,7 +62,24 @@ const Appointments = () => {
     )
 
     const fetchAppointmentDisplay = (appt: any) => {
-        return <div key={appt._id}><p>{`${moment(appt.date).format(dateFormat)} ${moment(appt.time).format(timeFormat)}`}</p></div>
+        return (
+            <div key={appt._id} className={AppointmentsStyle.upcomingAppointment}>
+                <div>
+                    <p className={AppointmentsStyle.appointmentDate}>{`${moment(appt.date).format(dateFormat).split('-')[0]} ${moment(appt.date).format(dateFormat).split('-')[1]}`}</p>
+                    <p className={AppointmentsStyle.appointmentTime}>{`${moment(appt.time).format(timeFormat)}`}</p>
+                </div>
+                <div>
+                    {fetchPatientDetails(appt.patient)}
+                </div>
+                <div className={AppointmentsStyle.appointmentActions}>
+                    <Space>
+                        <Button icon={<CheckOutlined />} type="primary"></Button>
+                        <Button icon={<SettingOutlined />}></Button>
+                        <Button icon={<DeleteOutlined />} danger></Button>
+                    </Space>
+                </div>
+            </div>
+        )
     }
 
     useEffect(()=>{
@@ -68,12 +95,12 @@ const Appointments = () => {
                     <div>
                         <h1>Upcoming Appointments</h1>
                         <Button type="primary" icon={<PlusOutlined/>} onClick={()=>setAddingAppointment(true)}>Add Appointment</Button>
-                        {
+                        <div className={AppointmentsStyle.upcomingAppointments}>{
                             loading ?
                             <Spin/>
                             :
                             appointments.map(a=>fetchAppointmentDisplay(a))
-                        }
+                        }</div>
                     </div>
                     <div>
                         <AppointmentCalendar patients={patients} appointments={appointments}/>

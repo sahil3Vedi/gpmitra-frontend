@@ -1,0 +1,34 @@
+.upcomingPatientDetails{
+    font-size: 25px;
+    margin-bottom: 0px;
+    margin-top: 3px;
+}
+
+.upcomingAppointment{
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    column-gap: 15px;
+    box-shadow: 2px 2px 2px #00000020;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    padding: 10px 20px;
+    border: 1px solid whitesmoke;
+}
+
+.upcomingAppointments{
+    margin-top: 20px;
+}
+
+.appointmentDate{
+    margin-bottom: 0px;
+}
+
+.appointmentTime{
+    margin-bottom: 0px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.appointmentActions{
+    padding-top: 5px;
+}

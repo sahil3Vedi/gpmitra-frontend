@@ -57,3 +57,19 @@
 th{
     font-weight: bold !important;
 }
+
+.ant-btn{
+    border-radius: 10px;
+}
+
+.ant-select-selector{
+    border-radius: 10px !important;
+}
+
+.ant-input{
+    border-radius: 10px !important;
+}
+
+.ant-picker-calendar-mode-switch {
+    display: none;
+}
