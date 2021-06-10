@@ -2,8 +2,8 @@
 import React, { useState, useEffect } from 'react'
 React.useLayoutEffect = React.useEffect
 // ANT
-import { Button, Modal, message, Spin, Space } from 'antd'
-import { PlusOutlined, CheckOutlined, DeleteOutlined, SettingOutlined } from '@ant-design/icons'
+import { Button, Modal, message, Spin, Space, Tooltip } from 'antd'
+import { PlusOutlined, CheckOutlined, CloseOutlined, SettingOutlined, ExclamationCircleOutlined } from '@ant-design/icons'
 // CSS
 import AppointmentsStyle from '../css/appointments.module.css'
 // COMPONENTS
@@ -26,7 +26,7 @@ const Appointments = () => {
     const fetchPatientDetails = (patientID: any) => {
         for (var p in patients){
             if (patientID === patients[p]._id){
-                return <p className={AppointmentsStyle.upcomingPatientDetails}>{`${patients[p].name} (+91 ${patients[p].phone})`}</p>
+                return <p className={AppointmentsStyle.upcomingPatientDetails}>{`${patients[p].name}`}<span className={AppointmentsStyle.patientDetails}>{` ${patients[p].gender[0].toUpperCase()} ${Math.floor(patients[p].age)} (+91 ${patients[p].phone})`}</span></p>
             }
         }
     }
@@ -73,9 +73,10 @@ const Appointments = () => {
                 </div>
                 <div className={AppointmentsStyle.appointmentActions}>
                     <Space>
-                        <Button icon={<CheckOutlined />} type="primary"></Button>
-                        <Button icon={<SettingOutlined />}></Button>
-                        <Button icon={<DeleteOutlined />} danger></Button>
+                        <Tooltip title="Start Session" placement="bottom"><Button icon={<CheckOutlined />} type="primary"></Button></Tooltip>
+                        <Tooltip title="Edit Appointment" placement="bottom"><Button icon={<SettingOutlined />}></Button></Tooltip>
+                        <Tooltip title="Cancel Appointment" placement="bottom"><Button icon={<CloseOutlined />} danger type="primary"></Button></Tooltip>
+                        {(moment() > moment(`${appt.date.split("T")[0]}T${appt.time.split("T")[1]}`)) ? <Tooltip title={`Appointment expires on ${moment(appt.date).add(2,'d').format("DD MMM")}`} placement="right"><ExclamationCircleOutlined /></Tooltip> : null}
                     </Space>
                 </div>
             </div>

@@ -32,3 +32,8 @@
 .appointmentActions{
     padding-top: 5px;
 }
+
+.patientDetails{
+    color: grey;
+    font-size: 20px;
+}
