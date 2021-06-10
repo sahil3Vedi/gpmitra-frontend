@@ -33,3 +33,22 @@
     padding: 10px;
     column-gap: 35px;
 }
+
+.layout{
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+}
+
+@media screen and (max-width: 1350px) {
+  .ant-picker-calendar{
+      display: none;
+  }
+
+  .pageDivider2{
+      display: grid;
+      grid-template-columns: 1fr;
+      padding: 10px;
+      column-gap: 35px;
+  }
+}

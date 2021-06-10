@@ -34,7 +34,7 @@
 }
 
 .ant-menu-submenu-title{
-    color: black !important;
+    color: white !important;
 }
 
 .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu{
@@ -72,4 +72,31 @@ th{
 
 .ant-picker-calendar-mode-switch {
     display: none;
+}
+
+.ant-picker-calendar {
+    border: 2px solid #f0f0f0;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.ant-picker-calendar-date-content {
+    scrollbar-width: none;
+}
+
+.ant-menu-horizontal > .ant-menu-item{
+    min-width: 200px;
+    width: 12%;
+    max-width: 250px;
+    text-align: center;
+}
+
+@media screen and (max-width: 1350px) {
+  .ant-picker-calendar{
+      display: none;
+  }
+}
+
+.ant-menu-horizontal > .ant-menu-item a {
+    color: rgba(255, 255, 255);
 }

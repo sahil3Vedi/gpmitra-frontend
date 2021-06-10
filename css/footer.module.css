@@ -1,0 +1,26 @@
+.footer{
+    background-color: whitesmoke;
+    padding: 30px 20px;
+    text-align: right;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+}
+
+.localText{
+    font-size: 15px;
+    margin-bottom: 0px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: grey;
+}
+
+.timeText{
+    font-size: 20px;
+    margin-bottom: 0px;
+}
+
+.companyText{
+    font-size: 15px;
+    margin-top: 30%;
+    transform: translateY(-50%);
+}

@@ -17,10 +17,17 @@
 
 .upcomingAppointments{
     margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 20px;
 }
 
 .appointmentDate{
     margin-bottom: 0px;
+    color: #13c2c2;
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 10px;
 }
 
 .appointmentTime{
@@ -36,4 +43,33 @@
 .patientDetails{
     color: grey;
     font-size: 20px;
+    margin-bottom: 0px;
+}
+
+.exclamation{
+    font-size: 20px;
+    color: orange;
+    transform: translateY(2px);
+}
+
+.upcomingPatientPhone{
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.largeAppointment{
+    display: none;
+}
+
+.smallAppointment{
+    display: block;
+}
+
+@media screen and (max-width: 750px) {
+    .upcomingAppointments{
+        margin-top: 20px;
+        display: grid;
+        grid-template-columns: 1fr;
+        column-gap: 20px;
+    }
 }

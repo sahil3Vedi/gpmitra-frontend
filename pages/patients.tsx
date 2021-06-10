@@ -8,6 +8,7 @@ import { PlusOutlined } from '@ant-design/icons'
 import Navbar from '../components/navbar'
 import AddPatient from '../components/addPatient'
 import ViewPatient from '../components/viewPatient'
+import Footer from '../components/footer'
 // AXIOS
 import axios from 'axios'
 // MOMENT
@@ -68,10 +69,8 @@ const Patients = () => {
     },[])
 
     return (
-        <div>
+        <div className="layout">
             <Navbar/>
-            {addPatientModal}
-            {viewPatientModal}
             <div className="pageWrapper">
                 <h1>Patients</h1>
                 <Button type="primary" icon={<PlusOutlined/>} onClick={()=>setAddingPatient(true)}>Add Patient</Button>
@@ -84,6 +83,9 @@ const Patients = () => {
                     }
                 </div>
             </div>
+            <Footer/>
+            {addPatientModal}
+            {viewPatientModal}
         </div>
     )
 }
