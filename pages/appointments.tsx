@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react'
 React.useLayoutEffect = React.useEffect
 // ANT
-import { Button, Modal, message, Spin, Space, Tooltip } from 'antd'
+import { Button, Modal, message, Spin, Space, Tooltip, Badge } from 'antd'
 import { PlusOutlined, CheckOutlined, CloseOutlined, UserOutlined, ExclamationCircleFilled, PhoneFilled } from '@ant-design/icons'
 // CSS
 import AppointmentsStyle from '../css/appointments.module.css'
@@ -85,24 +85,19 @@ const Appointments = () => {
     const fetchAppointmentDisplay = (appt: any) => {
         return (
             <div key={appt._id} className={AppointmentsStyle.upcomingAppointment}>
-                <div>
+                <Badge count={(moment() > moment(`${appt.date.split("T")[0]}T${appt.time.split("T")[1]}`)) ? <ExclamationCircleFilled className={AppointmentsStyle.exclamation} /> : null}><div>
                     <p className={AppointmentsStyle.appointmentDate} style={{fontSize:20, textAlign:"center"}}>{`${moment(appt.date).format(dateFormat).split('-')[0]}`}</p>
                     <p style={{fontSize:15, textAlign:"center", color:"#13c2c2"}}>{moment(appt.date).format(dateFormat).split('-')[1]}</p>
                     <p className={AppointmentsStyle.appointmentTime}>{`${moment(appt.time).format(timeFormat)}`}</p>
                 </div>
+                </Badge>
                 <div>
                     {fetchPatientDetails(appt.patient)}
                 </div>
                 <div className={AppointmentsStyle.appointmentActions}>
-                    <Space className={AppointmentsStyle.largeAppointment}>
-                        <Tooltip title="Start Session" placement="bottom"><Button icon={<CheckOutlined />} type="primary"></Button></Tooltip>
-                        <Tooltip title="Cancel Appointment" placement="bottom"><Button icon={<CloseOutlined />} danger type="primary" onClick={()=>initiateCancellation(appt._id)}></Button></Tooltip>
-                        {(moment() > moment(`${appt.date.split("T")[0]}T${appt.time.split("T")[1]}`)) ? <Tooltip title={`Appointment expires on ${moment(appt.date).add(2,'d').format("DD MMM")}`} placement="right"><ExclamationCircleFilled className={AppointmentsStyle.exclamation}/></Tooltip> : null}
-                    </Space>
                     <Space className={AppointmentsStyle.smallAppointment}>
                         <Tooltip title="Start Session" placement="bottom"><Button style={{marginBottom:"25px"}} icon={<CheckOutlined />} type="primary"></Button></Tooltip>
                         <Tooltip title="Cancel Appointment" placement="bottom"><Button icon={<CloseOutlined />} danger type="primary" onClick={()=>initiateCancellation(appt._id)}></Button></Tooltip>
-                        {(moment() > moment(`${appt.date.split("T")[0]}T${appt.time.split("T")[1]}`)) ? <Tooltip title={`Appointment expires on ${moment(appt.date).add(2,'d').format("DD MMM")}`} placement="right"><ExclamationCircleFilled className={AppointmentsStyle.exclamation}/></Tooltip> : null}
                     </Space>
                 </div>
             </div>
